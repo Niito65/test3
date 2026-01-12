@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg-page: #f8f9fa;
+            --card-gray: #e0e0e0;
+            --text-dark: #2c3e50;
+            --accent-blue: #1a5fb4;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-page);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 600px);
+            grid-template-rows: repeat(3, 320px);
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .card {
+            background-color: var(--card-gray);
+            border-radius: 20px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background-color: #d6d6d6;
+        }
+
+        /* Face avant */
+        .card-content h3 {
+            margin: 15px 0 10px 0;
+            font-size: 22px;
+            color: var(--text-dark);
+        }
+
+        .card-content p {
+            font-size: 16px;
+            color: #555;
+            margin: 0;
+        }
+
+        /* Face arrière (Détails) */
+        .card-details {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 25px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .card.active .card-details {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .card-details ul {
+            padding-left: 18px;
+            margin: 10px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .card-details li { margin-bottom: 5px; }
+
+        .footer-note {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 13px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 10px;
+        }
+
+        .icon { font-size: 50px; }
+    </style>
+</head>
+<body>
+
+<div class="grid-container">
+    <div class="card" onclick="this.classList.toggle('active')">
+        <div class="card-content">
+            <div class="icon">🔒</div>
+            <h3>Mots de passe</h3>
+            <p>Robustes et uniques</p>
+        </div>
+        <div class="card-details">
+            <strong>Règles essentielles :</strong>
+            <ul>
+                <li>Min. 12 caractères</li>
+                <li>Mélange : Maj, min, chiffres, @</li>
+                <li>Jamais le même sur plusieurs services</li>
+            </ul>
+            <div class="footer-note">➡️ Utilisez un gestionnaire de mots de passe</div>
+        </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+        <div class="card-content">
+            <div class="icon">💻</div>
+            <h3>Verrouillage poste</h3>
+            <p>Systématique et immédiat</p>
+        </div>
+        <div class="card-details">
+            <strong>Quand verrouiller ?</strong>
+            <ul>
+                <li>Dès que vous quittez votre bureau</li>
+                <li>Même en télétravail</li>
+                <li>Raccourci : Windows + L</li>
+            </ul>
+            <div class="footer-note">➡️ Accès libre = Danger direct pour vos données</div>
+        </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+        <div class="card-content">
+            <div class="icon">✉️</div>
+            <h3>Emails suspects</h3>
+            <p>Vigilance Phishing</p>
+        </div>
+        <div class="card-details">
+            <strong>Points à vérifier :</strong>
+            <ul>
+                <li>L’adresse de l’expéditeur</li>
+                <li>Orthographe ou style inhabituel</li>
+                <li>Demandes urgentes / Pièces jointes ZIP, EXE</li>
+            </ul>
+            <div class="footer-note">➡️ Doute ? Ne cliquez pas, signalez à la DSI</div>
+        </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+        <div class="card-content">
+            <div class="icon">📥</div>
+            <h3>Logiciels</h3>
+            <p>Uniquement approuvés</p>
+        </div>
+        <div class="card-details">
+            <strong>Restrictions :</strong>
+            <ul>
+                <li>Pas de téléchargement libre sur Internet</li>
+                <li>Pas d'extensions de navigateur non vérifiées</li>
+                <li>Uniquement catalogue DSI</li>
+            </ul>
+            <div class="footer-note">➡️ Besoin d'un outil ? Demandez au support</div>
+        </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+        <div class="card-content">
+            <div class="icon">☁️</div>
+            <h3>Protection données</h3>
+            <p>Usage des outils pro</p>
+        </div>
+        <div class="card-details">
+            <strong>Bonnes pratiques :</strong>
+            <ul>
+                <li>Pas de transfert sur mail perso</li>
+                <li>Pas de documents confidentiels visibles</li>
+                <li>Utilisez OneDrive et SharePoint</li>
+            </ul>
+            <div class="footer-note">➡️ Restez dans l'écosystème Microsoft 365</div>
+        </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+        <div class="card-content">
+            <div class="icon">🆔</div>
+            <h3>Méfiance</h3>
+            <p>Ingénierie sociale</p>
+        </div>
+        <div class="card-details">
+            <strong>Soyez attentif :</strong>
+            <ul>
+                <li>Inconnu demandant des infos internes</li>
+                <li>Prétendu "support" sans preuve</li>
+                <li>Tentative d'obtention d'accès</li>
+            </ul>
+            <div class="footer-note">➡️ Vérifiez l'identité avant de répondre</div>
+        </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+        <div class="card-content">
+            <div class="icon">🔌</div>
+            <h3>Périphériques</h3>
+            <p>Prudence USB</p>
+        </div>
+        <div class="card-details">
+            <strong>Risques :</strong>
+            <ul>
+                <li>Utilisez uniquement le matériel fourni</li>
+                <li>Clés USB/Disques externes non vérifiés = Virus</li>
+                <li>Ne branchez jamais un objet trouvé</li>
+            </ul>
+            <div class="footer-note">➡️ Le matériel inconnu peut voler vos données</div>
+        </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+        <div class="card-content">
+            <div class="icon">🔗</div>
+            <h3>Partages</h3>
+            <p>Gestion des accès</p>
+        </div>
+        <div class="card-details">
+            <strong>Contrôle :</strong>
+            <ul>
+                <li>Évitez les liens "Tout le monde"</li>
+                <li>Privilégiez le partage nominatif</li>
+                <li>Supprimez les accès inutiles</li>
+            </ul>
+            <div class="footer-note">➡️ Un mauvais réglage expose vos documents</div>
+        </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+        <div class="card-content">
+            <div class="icon">🎧</div>
+            <h3>Contact DSI</h3>
+            <p>En cas de doute</p>
+        </div>
+        <div class="card-details">
+            <strong>Alertez si :</strong>
+            <ul>
+                <li>Pièce jointe ouverte par erreur</li>
+                <li>Comportement anormal du poste</li>
+                <li>Perte ou vol d’un appareil</li>
+            </ul>
+            <div class="footer-note">➡️ Mieux vaut prévenir que laisser passer un incident</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
